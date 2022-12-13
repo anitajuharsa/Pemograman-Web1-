@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Kurs Mata Uang Rupiah </title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="login.html">Nomor 1</a></li>
+                <li><a href="kurs.html">Nomor 2</a></li>
+                <li><a href="image-picker.html">Nomor 4</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <form style="background-color: #b4d8ec;">
+        <fieldset>
+        <legend>Kurs Rupiah - Mata Uang Asing</legend>
+           <table border="1">
+               <thead>
+                   <th>Masukan Niai</th>
+                   <th>Valas</th>
+                   <th>Nilai Rupiah</th>
+               </thead>
+               <tbody>
+                   <td><input type="number" id="nilaiAwal" onchange="convert()" /></td>
+                   <td>
+                       <select  id="selectKurs" onchange="convert()">
+                           <option hidden>---Pilih---</option>
+                           <option value="usd">Dolar US</option>
+                           <option value="sd">Dolar Singapore</option>
+                           <option value="rm">Ringgit Malaysia</option>
+                           <option value="yen">Yen Jepang</option>
+                           <option value="eu">Euro</option>
+                           <option value="riyal">Riyal</option>
+                       </select>
+                   </td>
+                   <td>
+                       <input type="text" id="nilaiRupiah" readonly>
+                   </td>
+               </tbody>
+           </table>
+         </fieldset>
+       </form>
+
+    <script>
+        function convert() {
+            let inputAwal = document.getElementById("nilaiAwal").value;
+            let kurs = document.getElementById("selectKurs").value;
+            let hasil;
+
+            if (kurs == "usd") {
+                hasil = inputAwal * 9915;
+            } else if (kurs == "sd") {
+                hasil = inputAwal * 13472;
+            } else if (kurs == "rm") {
+                hasil = inputAwal * 874;
+            } else if (kurs == "yen") {
+                hasil = inputAwal * 120;
+            } else if (kurs == "eu") {
+                hasil = inputAwal * 15888;
+            } else if (kurs == "riyal") {
+                hasil = inputAwal * 3592;
+            } else {
+                hasil = 0;
+            }
+            document.getElementById("nilaiRupiah").value = String("Rp. " + hasil);
+        }
+    </script>
+
+</body>
+</html>
